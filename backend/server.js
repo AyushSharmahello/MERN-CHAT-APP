@@ -1,8 +1,15 @@
+// import cors from "cors"
+const cors = require("cors");
 const express = require("express");
 const dotenv = require("dotenv");
 const { chats } = require("./data/data");
+
+
+
 const app = express();
 dotenv.config();
+
+app.use(cors())
 
 app.get("/", (req,res) => {
     res.send("api is running")    
@@ -14,6 +21,7 @@ app.get("/", (req,res) => {
 
 app.get('/api/chat', (req, res) => {
     res.send(chats)
+    
 })
 
 app.get('/api/chat/:id', (req, res) => {
